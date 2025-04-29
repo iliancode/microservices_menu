@@ -11,5 +11,5 @@ app.use(express.json());
 const menuRoutes = require('./routes/menuRoutes');
 app.use('/', menuRoutes);
 
-const PORT = process.env.PORT || 5002;
+const PORT = process.env.PORT || 3003;
 app.listen(PORT, () => console.log(`Menu service running on port ${PORT}`));

@@ -2,6 +2,16 @@ const menuModel = require('../models/menuModel');
 
 const getAllMenus = async (req, res) => {
   try {
+    console.log('Fetching all menus');
+    const menus = await menuModel.getAllMenus(req.params.restaurant_id);
+    res.json(menus);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+}
+
+const getAllMenusByRestaurant = async (req, res) => {
+  try {
     console.log('Fetching all menus for restaurant:', req.params.restaurant_id);
     const menus = await menuModel.getMenuByRestaurant(req.params.restaurant_id);
     res.json(menus);
@@ -51,6 +61,7 @@ const deleteMenu = async (req, res) => {
 
 module.exports = {
   getAllMenus,
+  getAllMenusByRestaurant,
   getOneMenu,
   createMenu,
   updateMenu,

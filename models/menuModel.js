@@ -1,5 +1,10 @@
 const pool = require('../config/db');
 
+const getAllMenus = async () => {
+  const [rows] = await pool.query('SELECT * FROM menu_items');
+  return rows;
+}
+
 const getMenuByRestaurant = async (restaurantId) => {
   const [rows] = await pool.query('SELECT * FROM menu_items WHERE restaurant_id = ?', [restaurantId]);
   return rows;
@@ -30,6 +35,7 @@ const deleteMenuItem = async (id) => {
 };
 
 module.exports = {
+  getAllMenus,
   getMenuByRestaurant,
   getMenuItem,
   createMenuItem,
