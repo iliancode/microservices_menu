@@ -3,7 +3,7 @@ const menuModel = require('../models/menuModel');
 const getAllMenus = async (req, res) => {
   try {
     console.log('Fetching all menus');
-    const menus = await menuModel.getAllMenus(req.params.restaurant_id);
+    const menus = await menuModel.getAllMenus();
     res.json(menus);
   } catch (err) {
     res.status(500).json({ error: err.message });
